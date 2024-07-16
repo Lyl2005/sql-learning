@@ -25,7 +25,3 @@ ROUND(IF(author = 'Булгаков М.А.', price*1.1, IF(author = 'Есени�
 FROM book;
 
 
-SELECT title, author, price * amount AS total
-FROM book
-WHERE price * amount > 4000;
-
