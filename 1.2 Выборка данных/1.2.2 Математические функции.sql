@@ -16,3 +16,15 @@ RADIANS(x)	конвертирует значение x из градусов в 
 ABS(x)	модуль числа x	ABS(-1) = 1
 ABS(1) = 1
 PI()	pi = 3.1415926...	 
+
+
+SELECT title, 
+    author, amount,ROUND(price-(price*0.3),2) AS new_price
+FROM book;
+
+
+SELECT title, 
+    price, 
+    ROUND((price*18/100)/(1+18/100),2) AS tax, 
+    ROUND(price/(1+18/100),2) AS price_tax 
+FROM book;
