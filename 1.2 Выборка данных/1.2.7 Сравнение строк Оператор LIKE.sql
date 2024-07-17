@@ -56,4 +56,7 @@ FROM book
 WHERE title LIKE '%_ _%' AND author LIKE '%С.%'
 ORDER BY title
   
-  
+  SELECT title, author
+FROM book
+WHERE author LIKE '%С.%'AND title LIKE '_% _%' OR '_% _% _%'
+ORDER BY title
