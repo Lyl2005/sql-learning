@@ -4,11 +4,11 @@
 а ключевые слова GROUP BY опускаются.
 
     Пример
-
 Посчитать количество экземпляров книг на складе.
-
 SELECT SUM(amount) AS Количество
 FROM book;
+
+
 
 SELECT SUM(amount) AS Количество, 
     SUM(price * amount) AS Стоимость
