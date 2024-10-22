@@ -18,3 +18,11 @@ SELECT title, name_author
 FROM 
     author INNER JOIN book
     ON author.author_id = book.author_id;
+Задание
+Вывести название, жанр и цену тех книг, количество которых больше 8, в отсортированном по убыванию цены виде.
+  SELECT title, name_genre, price
+FROM genre INNER JOIN book 
+ON genre.genre_id = book.genre_id
+WHERE amount > 8
+ORDER BY PRICE DESC;
+
