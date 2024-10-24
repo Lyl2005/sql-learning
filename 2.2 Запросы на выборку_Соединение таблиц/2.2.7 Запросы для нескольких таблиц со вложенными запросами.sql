@@ -7,3 +7,7 @@ GROUP BY name_author
 HAVING COUNT(DISTINCT name_genre)=1;
 
 
+SELECT author_id, MAX(amount) AS max_sum_amount
+  
+     FROM book 
+     GROUP BY author_id
