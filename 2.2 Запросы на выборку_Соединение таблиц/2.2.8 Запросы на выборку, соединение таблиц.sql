@@ -18,6 +18,27 @@ WHERE genre.genre_id IN
           ON query_in_1.sum_amount= query_in_2.sum_amount
          )
          ORDER BY title
+          
+          
+          SELECT title,
+	   name_author,
+	   name_genre,
+	   price,
+	   amount
+  FROM book
+  JOIN author USING (author_id)
+  JOIN genre USING (genre_id)
+ WHERE genre_id IN (
+	   SELECT genre_id
+		 FROM book
+		GROUP BY genre_id
+	   HAVING SUM(amount) IN (
+              SELECT MAX(S)
+            	FROM (SELECT genre_id, SUM(amount) AS S
+                    	FROM book
+                   	   GROUP BY genre_id
+                  	 ) g_s
+              )
 Сначала определяется таблица, из которой выбираются данные (FROM), 
 затем из этой таблицы отбираются записи в соответствии с условием  WHERE,
 выбранные данные агрегируются (GROUP BY),  из агрегированных записей выбираются те,
