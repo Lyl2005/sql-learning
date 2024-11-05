@@ -6,6 +6,7 @@ INNER JOIN book ON author.author_id = book.author_id
 GROUP BY name_author
 HAVING COUNT(DISTINCT name_genre)=1;
 
+SELECT author_id FROM book  group by author_id HAVING COUNT(DISTINCT genre_id)=1
 
 SELECT author_id, MAX(amount) AS max_sum_amount
   
