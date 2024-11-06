@@ -1,10 +1,19 @@
 SELECT name_author
 FROM author 
 INNER JOIN book ON author.author_id = book.author_id
-  INNER JOIN  genre ON genre.genre_id = book.genre_id      
+  INNER JOIN  genre ON genre.genre_id = book.genre_id - получилась лишняя строка запроса,  исправлено в следующем запросе 
 
 GROUP BY name_author
 HAVING COUNT(DISTINCT name_genre)=1;
+
+SELECT name_author
+FROM author 
+INNER JOIN book ON author.author_id = book.author_id
+ GROUP BY name_author
+HAVING COUNT(DISTINCT genre_id)=1 - и исправлен уникальный запрос по айди жанра,а не по имени,которого в таблицах book и автор нет,
+и нет джойна с таблицей жанр   
+
+
 
 SELECT name_author
 FROM author  
