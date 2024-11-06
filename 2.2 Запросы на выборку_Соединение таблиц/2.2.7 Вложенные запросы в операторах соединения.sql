@@ -1,3 +1,16 @@
+
+Вложенные запросы могут использоваться в операторах соединения JOIN.
+При этом им необходимо присваивать имя, которое записывается сразу после закрывающей скобки вложенного запроса.
+
+SELECT
+ ...
+FROM
+    таблица ... JOIN  
+       (
+        SELECT ...
+       ) имя_вложенного_запроса
+    ON условие
+
 SELECT title,name_author,name_genre,price,amount
 FROM book INNER JOIN author ON author.author_id = book.author_id
 INNER JOIN genre ON  book.genre_id = genre.genre_id
