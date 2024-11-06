@@ -13,7 +13,12 @@ INNER JOIN book ON author.author_id = book.author_id
 HAVING COUNT(DISTINCT genre_id)=1 - и исправлен уникальный запрос по айди жанра,а не по имени,которого в таблицах book и автор нет,
 и нет джойна с таблицей жанр   
 
-
+SELECT name_author,name_genre - почему выводит не то,что нужно,разобраться!!!
+FROM author 
+INNER JOIN book ON author.author_id = book.author_id
+  INNER JOIN  genre ON genre.genre_id = book.genre_id
+GROUP BY name_author,name_genre
+HAVING COUNT(DISTINCT name_genre)=1
 
 SELECT name_author
 FROM author  
