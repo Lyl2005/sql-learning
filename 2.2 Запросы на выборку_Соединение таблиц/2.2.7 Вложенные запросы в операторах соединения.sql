@@ -56,6 +56,27 @@ WHERE genre.genre_id IN
                   	 ) g_s
               )
 
+	
+	SELECT title,name_author,name_genre,price,amount
+FROM book INNER JOIN author ON author.author_id = book.author_id
+INNER JOIN genre ON  book.genre_id = genre.genre_id
+
+WHERE genre.genre_id IN 
+(SELECT query_in_1.genre_id
+          FROM (SELECT genre_id, SUM(amount) AS sum_amount
+                FROM book
+                GROUP BY genre_id
+               )query_in_1
+            INNER JOIN 
+              (SELECT genre_id, SUM(amount) AS sum_amount
+                FROM book
+                GROUP BY genre_id
+                ORDER BY sum_amount DESC
+                LIMIT 1
+               ) query_in_2
+          ON query_in_1.sum_amount= query_in_2.sum_amount
+         )
+         ORDER BY title
 	наконец-то дошло в каких случаях используется груп бай: если в селекте выбираются столбцы с агрегированными строчками,
 	то в запросе обязательно надо добавить груп бай и прописать там остальные столбцы, 
 	и наборот: если хочешь добавить групбай то нужно писать туда все неагрегированные столбцы. 
