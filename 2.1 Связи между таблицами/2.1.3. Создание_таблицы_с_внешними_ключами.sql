@@ -15,3 +15,18 @@ CREATE TABLE таблица (
 В созданной таблице в столбец_1 не может содержать пустое значение, а столбец_2 - может.
 
 Для внешних ключей рекомендуется устанавливать ограничение NOT NULL
+Задание
+Перепишите запрос на создание таблицы book , чтобы ее структура соответствовала структуре, показанной на логической схеме 
+(таблица genre уже создана, порядок следования столбцов - как на логической схеме в таблице book, genre_id  - внешний ключ) .
+Для genre_id ограничение о недопустимости пустых значений не задавать.
+CREATE TABLE book (
+    book_id INT PRIMARY KEY AUTO_INCREMENT, 
+    title VARCHAR(50), 
+    author_id INT NOT NULL,
+    genre_id INT,
+    price DECIMAL(8, 2), 
+    amount INT, 
+    FOREIGN KEY (author_id)  REFERENCES author (author_id),
+    FOREIGN KEY (genre_id)  REFERENCES genre (genre_id)
+);
+
