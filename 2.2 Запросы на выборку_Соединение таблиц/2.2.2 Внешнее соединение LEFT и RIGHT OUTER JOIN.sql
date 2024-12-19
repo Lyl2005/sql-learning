@@ -26,3 +26,12 @@ https://www.youtube.com/watch?v=PTAkqURmI0s на котиках
 
 Оператор RIGHT JOIN поступит наоборот, выведет данные из второй (правой) таблицы,
  а на место не хватающих записей из первой поставит Null
+
+Задание
+Вывести все жанры, которые не представлены в книгах на складе.
+ SELECT name_genre 
+FROM genre LEFT JOIN book
+     ON genre.genre_id = book.genre_id
+     WHERE book.genre_id is Null
+ORDER BY name_genre
+
